@@ -59,6 +59,7 @@ public class SpringManagedTransaction implements Transaction {
   }
 
   /**
+   * 返回数据库连接
    * {@inheritDoc}
    */
   @Override
@@ -75,6 +76,7 @@ public class SpringManagedTransaction implements Transaction {
    * <p>
    * It also reads autocommit setting because when using Spring Transaction MyBatis thinks that autocommit is always
    * false and will always call commit/rollback so we need to no-op that calls.
+   * 从spring的事务管理中获得一个连接
    */
   private void openConnection() throws SQLException {
     this.connection = DataSourceUtils.getConnection(this.dataSource);
